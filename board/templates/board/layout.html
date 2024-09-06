@@ -1,0 +1,12 @@
+{% extends "board/base.html" %}
+{% block layout %}
+  {% include "./header.html" %}
+
+  <main>
+    {% block contents %}{% endblock %}
+
+    <div>
+      {% include "./footer.html" %}
+    </div>
+  </main>
+{% endblock %}

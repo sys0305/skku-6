@@ -1,0 +1,39 @@
+{% extends "./layout.html" %}
+{% block contents %}
+  <div class="container board-container">
+    <div class="row">
+      <div class="col">
+        <h1>글 작성</h1>
+      </div>
+    </div>
+    <form class="container" method="POST" action=''>
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          {{ field.label_tag }}
+          {{ field }}
+
+          {% for error in field.errors %}
+            <div class="form-text text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      {% comment %} <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" name="title" class="form-control" id="title" placeholder="글 제목 입력">
+      </div>
+      <div class="mb-3">
+        <label for="nickname" class="form-label">닉네임</label>
+        <input type="text" name="nickname" class="form-control" id="nickname" placeholder="글 제목 입력">
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control" name="content" id="content" rows="10"></textarea>
+      </div> {% endcomment %}
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">제출</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "./layout.html" %}
+{% block contents %}
+  <div class="container board-container">
+    <div class="row">
+      <div class="col">
+        <h1>{{ board.title }}</h1>
+      </div>
+    </div>
+    <div class="my-3" style="display:flex; justify-content: space-between; align-items:center;">
+      <span>
+        {{ board.nickname }}
+      </span>
+      <div>
+        <a class="btn btn-danger" href="/board/delete?board_id={{ board.id }}" style="float:right">글 삭제</a>
+        <a class="btn btn-success" href="/board/{{board.id}}/modify" style="float:right">글 수정</a>
+      </div>
+    </div>
+
+    <div id="board-content" class="p-3" style="border: 1px solid #e9e9e9; min-height:200px;">
+      {{ board.content }}
+    </div>
+
+    <!-- 댓글 폼 등록 -->
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.content.label_tag }}
+      {{ form.content }}
+      <button type="submit" class="btn btn-primary">댓글 작성</button>
+
+      {% for error in form.content.errors %}
+        <div class="form-text text-danger">{{ error }}</div>
+      {% endfor %}
+    </form>
+
+    <div>
+      <ul>
+        {% for comment in comment_list %}
+          <li>{{ comment.content }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.container -->
+{% endblock %}

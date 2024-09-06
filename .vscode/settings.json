@@ -1,0 +1,13 @@
+{
+  "html.format.templating": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "unibeautify.enabled": true,
+  "[django-html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Glavin001.unibeautify-vscode"
+  }
+}
